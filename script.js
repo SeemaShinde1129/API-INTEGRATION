@@ -1,18 +1,15 @@
 const weatherBox = document.getElementById("weatherBox");
 const newsBox = document.getElementById("newsBox");
 
-// ================= EVENTS =================
 
-// Weather submit (Enter key works)
+
 document.getElementById("weatherForm").addEventListener("submit", function (e) {
   e.preventDefault();
   openWeather();
 });
 
-// News button click
 document.getElementById("newsBtn").addEventListener("click", openNews);
 
-// Clear weather automatically when input becomes empty
 document.getElementById("cityInput").addEventListener("input", function () {
   const resultDiv = document.getElementById("weatherResult");
   const errorDiv = document.getElementById("weatherError");
@@ -24,11 +21,11 @@ document.getElementById("cityInput").addEventListener("input", function () {
 });
 
 
-// ================= WEATHER =================
+
 
 async function openWeather() {
 
-  // Clear News Automatically
+ 
   document.getElementById("newsContainer").innerHTML = "";
   document.getElementById("newsError").textContent = "";
 
@@ -36,7 +33,6 @@ async function openWeather() {
   const resultDiv = document.getElementById("weatherResult");
   const errorDiv = document.getElementById("weatherError");
 
-  // Remove previous weather
   resultDiv.innerHTML = "";
   errorDiv.textContent = "";
 
@@ -48,7 +44,6 @@ async function openWeather() {
   try {
     resultDiv.innerHTML = `<div class="text-gray-500">Loading weather...</div>`;
 
-    // Get Latitude & Longitude
     const geoRes = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
     );
@@ -83,11 +78,9 @@ async function openWeather() {
 }
 
 
-// ================= NEWS =================
 
 async function openNews() {
 
-  // Close Weather Automatically
   document.getElementById("weatherResult").innerHTML = "";
   document.getElementById("weatherError").textContent = "";
 
@@ -102,7 +95,6 @@ async function openNews() {
       <div class="text-gray-500 text-center">Loading news...</div>
     `;
 
-    // Fetch 20 articles instead of 5
     const response = await fetch(
       "https://api.spaceflightnewsapi.net/v4/articles/?limit=20"
     );
@@ -113,10 +105,8 @@ async function openNews() {
 
     const data = await response.json();
 
-    // Shuffle articles randomly
     const shuffled = data.results.sort(() => 0.5 - Math.random());
 
-    // Pick first 5 after shuffle
     const randomFive = shuffled.slice(0, 5);
 
     container.innerHTML = "";
@@ -141,4 +131,5 @@ async function openNews() {
     container.innerHTML = "";
     errorDiv.textContent = "Unable to load news. Please try again.";
   }
+
 }
