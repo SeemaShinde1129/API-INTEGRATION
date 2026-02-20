@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather & News Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="bg-gradient-to-br from-slate-900 to-slate-700 min-h-screen text-white">
+
+<div class="container mx-auto px-4 py-10">
+
+  <h1 class="text-4xl font-bold text-center mb-10">
+    <i class="fa-solid fa-chart-line text-yellow-400"></i>
+    Dashboard
+  </h1>
+
+  <div class="grid md:grid-cols-2 gap-8">
+
+    <!-- WEATHER BOX -->
+    <div id="weatherBox" class="bg-white text-gray-800 rounded-2xl shadow-2xl p-6 transition-all">
+
+      <h2 class="text-2xl font-semibold mb-4 text-blue-600">
+        <i class="fa-solid fa-cloud-sun text-blue-500"></i>
+        Weather
+      </h2>
+
+      <form id="weatherForm" class="flex gap-2 mb-4">
+        <input 
+          type="text"
+          id="cityInput"
+          placeholder="Enter city"
+          class="flex-1 border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400"
+        >
+        <button 
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition"
+        >
+          Search
+        </button>
+      </form>
+
+      <div id="weatherResult" class="space-y-2"></div>
+      <div id="weatherError" class="text-red-500 mt-2"></div>
+
+    </div>
+
+
+    <!-- NEWS BOX -->
+    <div id="newsBox" class="bg-white text-gray-800 rounded-2xl shadow-2xl p-6 transition-all">
+
+      <h2 class="text-2xl font-semibold mb-4 text-purple-600">
+        <i class="fa-solid fa-newspaper text-purple-500"></i>
+        Latest News
+      </h2>
+
+      <button 
+        id="newsBtn"
+        class="mb-4 bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg transition"
+      >
+        Load News
+      </button>
+
+      <div id="newsContainer" class="space-y-4"></div>
+      <div id="newsError" class="text-red-500 mt-2"></div>
+
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
